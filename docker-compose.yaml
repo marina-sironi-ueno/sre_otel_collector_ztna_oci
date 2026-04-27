@@ -1,0 +1,15 @@
+services:     
+  otel-collector:
+    platform: linux/amd64
+    image: otel/opentelemetry-collector-contrib:nightly
+    container_name: sre-otel
+    command: ["--config=/etc/otelcol-contrib/config.yaml"]
+    environment:
+      NEW_RELIC_LICENSE_KEY: "${NEW_RELIC_LICENSE_KEY}"
+      ZTNA_TARGET: "${ZTNA_TARGET}"
+    volumes:
+      - ./otel/config.yaml:/etc/otelcol/config.yaml:ro
+    ports:
+      - "4318:4318"   # OTLP/HTTP receiver (Kong → Collector)
+      - "4317:4317"   # OTLP/gRPC receiver (opcional)
+      - "13133:13133" # Health check extension
