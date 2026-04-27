@@ -2,7 +2,7 @@ version: "3.8"
 
 services:     
   otel-collector:
-    image: otel/opentelemetry-collector-contrib:0.180.0
+    image: otel/opentelemetry-collector-contrib:latest
     environment:
       NEW_RELIC_LICENSE_KEY: "${NEW_RELIC_LICENSE_KEY}"
       ZTNA_TARGET: "${ZTNA_TARGET}"
