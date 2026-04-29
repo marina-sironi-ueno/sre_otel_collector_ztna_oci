@@ -1,5 +1,5 @@
 # Dockerfile
-FROM otel/opentelemetry-collector-contrib:latest
+FROM otel/opentelemetry-collector-contrib:0.108.0
 
 # Copiamos el config
 COPY config/config.yaml /etc/otelcol-contrib/config.yaml
