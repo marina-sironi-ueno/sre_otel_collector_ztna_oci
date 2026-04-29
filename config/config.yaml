@@ -19,6 +19,10 @@ receivers:
           static_configs:
             - targets:
                 - ${ZTNA_TARGET}:60123
+              labels:
+                environment: onprem
+                source: prod-compute-ztna-fd3
+                ip: 10.68.24.189
 processors:
   memory_limiter:
     check_interval: 1s
@@ -38,7 +42,7 @@ exporters:
     headers:
       api-key: ${NEW_RELIC_LICENSE_KEY}
     external_labels:
-      prometheus_server: otel-collector-ztna
+      prometheus_server: otel-collector-ztna-oci
     timeout: 60s
     retry_on_failure:
       enabled: true
